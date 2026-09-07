@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>20周健身工作台</title>
+<meta name="theme-color" content="#0f172a" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="健身工作台" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+<link rel="apple-touch-icon" href="./icons/icon-192.png" />
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#18202a;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent2:#0f766e;--warn:#b45309;--danger:#b91c1c;--ok:#15803d;--shadow:0 8px 28px rgba(15,23,42,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft Yahei",Arial,sans-serif}button,input,select,textarea{font:inherit}.app{max-width:920px;margin:0 auto;padding:16px 14px 90px}.topbar{position:sticky;top:0;z-index:20;background:rgba(245,247,251,.93);backdrop-filter:blur(12px);padding:10px 0 12px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:center}.brand h1{font-size:20px;margin:0}.sub{font-size:12px;color:var(--muted)}.pill{padding:6px 10px;border-radius:999px;background:#e8eefc;color:#1d4ed8;font-size:12px;font-weight:700}.grid{display:grid;gap:12px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}.app{padding:12px 10px 95px}}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}.hero{padding:18px;background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff}.hero .muted{color:#cbd5e1}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:var(--muted)}.metric{font-size:28px;font-weight:800;line-height:1.1}.small{font-size:12px}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:white}.secondary{background:#eef2ff;color:#3730a3}.ghost{background:#f3f4f6;color:#111827}.danger{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}.btn:active{transform:scale(.99)}.section-title{font-weight:800;margin:0 0 10px;font-size:16px}.tabs{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:30}.tabs-inner{width:min(920px,100%);display:grid;grid-template-columns:repeat(5,1fr)}.tab{padding:11px 6px 10px;text-align:center;font-size:11px;color:#6b7280;cursor:pointer}.tab.active{color:var(--accent);font-weight:800}.tab b{display:block;font-size:18px;margin-bottom:2px}.page{display:none}.page.active{display:block}.exercise{border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}.exercise h3{margin:0;font-size:15px}.exercise .meta{font-size:12px;color:var(--muted);margin:4px 0 10px}.sets{display:grid;gap:8px}.setrow{display:grid;grid-template-columns:42px 1fr 1fr auto;gap:8px;align-items:center}.setrow input{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}.setidx{font-size:12px;color:var(--muted);text-align:center}.check{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:#f8fafc;cursor:pointer}.check.done{background:#dcfce7;border-color:#86efac;color:#166534}.timerbox{display:flex;gap:8px;align-items:center;margin-top:10px;padding:10px;border-radius:12px;background:#f8fafc}.timer{font-weight:800;font-variant-numeric:tabular-nums}.tip{background:#f8fafc;border-left:4px solid #94a3b8;padding:10px 12px;border-radius:10px;font-size:12px;color:#475569;margin-top:10px}.safety{background:#fff7ed;border:1px solid #fed7aa}.safety strong{color:#9a3412}.progress{height:9px;background:#e5e7eb;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#0f766e)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 4px;border-bottom:1px solid var(--line)}.input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.label{font-size:12px;color:var(--muted);margin-bottom:5px}.chart{height:180px;display:flex;align-items:flex-end;gap:6px;padding:12px 4px 2px}.bar{flex:1;background:#cbd5e1;border-radius:6px 6px 0 0;min-width:8px;position:relative}.bar span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:#64748b;white-space:nowrap}.badge{font-size:11px;padding:4px 7px;border-radius:999px;background:#f1f5f9;color:#475569}.notice{font-size:12px;line-height:1.6}.hidden{display:none}.list{display:grid;gap:8px}.logitem{padding:10px 0;border-bottom:1px solid var(--line)}
+
+.gif-demo{margin-bottom:12px}.gif-stage{height:190px;border:1px solid #dbeafe;border-radius:12px;background:linear-gradient(180deg,#eff6ff,#fff);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.gif-person{position:relative;width:150px;height:165px;transform-origin:50% 80%;animation:demoMove 2.4s ease-in-out infinite}.gif-head{position:absolute;width:30px;height:30px;border:4px solid #1e3a8a;border-radius:50%;left:60px;top:9px;background:#fff}.gif-body{position:absolute;width:7px;height:62px;background:#2563eb;border-radius:8px;left:72px;top:39px}.gif-arm,.gif-leg{position:absolute;height:7px;background:#2563eb;border-radius:8px;transform-origin:4px 4px}.gif-arm{width:58px;top:48px}.gif-arm.l{left:72px;transform:rotate(145deg)}.gif-arm.r{left:22px;transform-origin:54px 4px;transform:rotate(35deg)}.gif-leg{width:64px;top:98px}.gif-leg.l{left:73px;transform:rotate(58deg)}.gif-leg.r{left:17px;transform-origin:60px 4px;transform:rotate(122deg)}.gif-floor{position:absolute;left:12%;right:12%;bottom:18px;height:2px;background:#cbd5e1}.gif-label{position:absolute;right:9px;bottom:7px;font-size:10px;color:#64748b;background:rgba(255,255,255,.88);padding:3px 6px;border-radius:6px}.gif-stage[data-motion="pull"] .gif-person{animation-name:pullMove}.gif-stage[data-motion="squat"] .gif-person{animation-name:squatMove}.gif-stage[data-motion="hinge"] .gif-person{animation-name:hingeMove}.gif-stage[data-motion="press"] .gif-person{animation-name:pressMove}.gif-stage[data-motion="core"] .gif-person{animation-name:coreMove}.gif-stage[data-motion="carry"] .gif-person{animation-name:carryMove}@keyframes demoMove{50%{transform:translateY(4px)}}@keyframes pullMove{50%{transform:translateY(10px) scaleY(.92)}}@keyframes squatMove{50%{transform:translateY(34px) scaleY(.82) rotate(2deg)}}@keyframes hingeMove{50%{transform:rotate(32deg) translate(10px,12px)}}@keyframes pressMove{50%{transform:translateY(-8px) scaleY(1.04)}}@keyframes coreMove{50%{transform:rotate(-22deg) translateY(12px)}}@keyframes carryMove{0%{transform:translateX(-18px)}50%{transform:translateX(18px)}100%{transform:translateX(-18px)}}@media(prefers-reduced-motion:reduce){.gif-person{animation:none}}
+.demo{margin-top:10px;border:1px solid #dbeafe;border-radius:12px;background:#f8fbff;overflow:hidden}.demo summary{cursor:pointer;list-style:none;padding:11px 12px;font-size:13px;font-weight:800;color:#1d4ed8;display:flex;align-items:center;justify-content:space-between}.demo summary::-webkit-details-marker{display:none}.demo summary::after{content:'＋';font-size:16px}.demo[open] summary::after{content:'－'}.demo-body{border-top:1px solid #dbeafe;padding:12px}.demo-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}.demo-step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:12px;line-height:1.55}.demo-step b{display:block;color:#0f172a;margin-bottom:3px}.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.demo-note{padding:9px 10px;border-radius:10px;background:#fff;font-size:12px;line-height:1.55}.demo-note strong{display:block;margin-bottom:3px}.demo-note.good{border-left:3px solid #16a34a}.demo-note.bad{border-left:3px solid #dc2626}.demo-note.safe{border-left:3px solid #d97706;grid-column:1/-1}.motion{display:flex;align-items:center;gap:6px;color:#334155;font-weight:700;margin-bottom:8px}.motion span{background:#e2e8f0;border-radius:8px;padding:4px 7px;font-size:11px}.motion i{font-style:normal;color:#64748b}@media(max-width:520px){.demo-steps{grid-template-columns:1fr}.demo-grid{grid-template-columns:1fr}.demo-note.safe{grid-column:auto}}
+
+.real-video{margin:0 0 12px}.real-video-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.real-video-title{font-size:13px;font-weight:800;color:#0f172a}.real-video-badge{font-size:10px;padding:3px 6px;border-radius:999px;background:#dcfce7;color:#166534}.video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0f172a;border:1px solid #cbd5e1}.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;color:#e2e8f0;background:linear-gradient(135deg,#0f172a,#1e293b)}.video-placeholder button{margin-top:10px}.video-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.video-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:10px;padding:9px 11px;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:800}.video-link.alt{background:#f1f5f9;color:#334155}.video-note{font-size:11px;color:#64748b;margin-top:7px;line-height:1.5}.gif-demo{display:none!important}
+
+.install-card{display:none;margin-bottom:12px;background:#eef6ff;border:1px solid #bfdbfe}.install-card.show{display:block}.install-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.install-copy{font-size:12px;line-height:1.55;color:#475569}.offline-chip{font-size:10px;padding:4px 7px;border-radius:999px;background:#e2e8f0;color:#334155;font-weight:800}.offline-chip.online{background:#dcfce7;color:#166534}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><div><h1>健身工作台</h1><div class="sub">20周 · 六块腹肌 + 体能强化</div></div><div style="display:flex;align-items:center;gap:7px"><span id="netChip" class="offline-chip online">在线</span><span class="pill" id="weekPill">第1周</span></div></div>
+  </div>
+
+  <div id="installCard" class="card install-card">
+    <div class="install-row">
+      <div>
+        <div style="font-weight:800;margin-bottom:3px">安装到手机桌面</div>
+        <div class="install-copy">安装后可像 App 一样从桌面启动；训练记录仍保存在本机。</div>
+      </div>
+      <button id="installBtn" class="btn primary" type="button">安装</button>
+    </div>
+  </div>
+
+  <section id="home" class="page active">
+    <div class="card hero">
+      <div class="row"><div><div class="small muted">今日训练</div><div class="metric" id="todayTitle">上肢A + 腹肌</div></div><div class="badge" id="todayDuration">60分钟</div></div>
+      <div style="height:12px"></div><div class="muted small" id="todayDesc">恢复期：动作质量优先，保留2–3次余力。</div>
+      <div style="height:14px"></div><button class="btn primary" onclick="openToday()">开始今天训练</button>
+    </div>
+
+    <div class="grid g3" style="margin-top:12px">
+      <div class="card"><div class="small muted">当前体重</div><div class="metric" id="mWeight">70.1</div><div class="small">kg</div></div>
+      <div class="card"><div class="small muted">体脂率</div><div class="metric" id="mFat">22.3</div><div class="small">%</div></div>
+      <div class="card"><div class="small muted">腰围</div><div class="metric" id="mWaist">--</div><div class="small">cm</div></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="row"><h2 class="section-title">春节前目标</h2><span class="badge">B方案</span></div>
+      <div class="small muted">体脂 14–16% · 俯卧撑 30+ · 引体 8–10 · 5km &lt; 30min</div>
+      <div style="height:10px"></div><div class="progress"><span id="goalProgress" style="width:8%"></span></div>
+    </div>
+
+    <div class="card safety" style="margin-top:12px">
+      <h2 class="section-title">今日安全护栏</h2>
+      <div class="notice"><strong>高尿酸/痛风：</strong>避免脱水、极端低碳、断食和突然暴增训练量；维持全天分散饮水。<br><strong>膝盖旧伤：</strong>如出现明显疼痛、肿胀、卡住或不稳，停止诱发动作。<br><strong>当前阶段：</strong>前4周暂不做高强度HIIT。</div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h2 class="section-title">本周安排</h2>
+      <table><tbody id="weekPlan"></tbody></table>
+    </div>
+  </section>
+
+  <section id="train" class="page">
+    <div class="card">
+      <div class="row"><div><div class="small muted">训练日</div><div class="metric" style="font-size:24px" id="trainTitle">上肢A + 腹肌</div></div><select id="sessionSelect" class="input" style="width:auto" onchange="renderWorkout(this.value)"></select></div>
+      <div class="tip">强度标准：每组结束保留约2–3次余力（RIR 2–3）。第一阶段不追重量，先把动作做稳定。</div>
+    </div>
+    <div id="exerciseList" style="margin-top:12px"></div>
+    <button class="btn success" style="width:100%" onclick="finishWorkout()">完成本次训练</button>
+  </section>
+
+  <section id="body" class="page">
+    <div class="card">
+      <h2 class="section-title">身体数据记录</h2>
+      <div class="grid g2">
+        <div><div class="label">体重 kg</div><input id="iWeight" class="input" type="number" step="0.1"></div>
+        <div><div class="label">腰围 cm</div><input id="iWaist" class="input" type="number" step="0.1"></div>
+        <div><div class="label">体脂率 %</div><input id="iFat" class="input" type="number" step="0.1"></div>
+        <div><div class="label">血尿酸 μmol/L（可空）</div><input id="iUric" class="input" type="number"></div>
+        <div><div class="label">标准俯卧撑</div><input id="iPush" class="input" type="number"></div>
+        <div><div class="label">标准引体向上</div><input id="iPull" class="input" type="number"></div>
+      </div>
+      <div style="height:12px"></div><button class="btn primary" onclick="saveBody()">保存今日数据</button>
+    </div>
+    <div class="card" style="margin-top:12px"><h2 class="section-title">最近体重趋势</h2><div id="weightChart" class="chart"></div></div>
+    <div class="card" style="margin-top:12px"><h2 class="section-title">数据记录</h2><div id="bodyLogs" class="list"></div></div>
+  </section>
+
+  <section id="nutrition" class="page">
+    <div class="card"><h2 class="section-title">每日营养目标</h2><div class="grid g3"><div><div class="small muted">热量起点</div><div class="metric">2000–2200</div><div class="small">kcal/天</div></div><div><div class="small muted">蛋白质</div><div class="metric">110–130</div><div class="small">g/天</div></div><div><div class="small muted">减重速度</div><div class="metric">0.15–0.30</div><div class="small">kg/周</div></div></div></div>
+    <div class="card" style="margin-top:12px"><h2 class="section-title">简单执行模板</h2><div class="notice"><b>早餐：</b>小米粥/燕麦 + 2个鸡蛋 + 250–300ml奶/无糖酸奶 + 水果。<br><br><b>午餐：</b>½蔬菜 + ¼蛋白质 + ¼主食；食堂优先鸡肉、鱼、瘦肉、豆腐。<br><br><b>训练前：</b>香蕉/苹果 + 奶/酸奶。<br><br><b>晚餐：</b>一拳主食 + 一掌半左右蛋白质 + 大量蔬菜。</div></div>
+    <div class="card safety" style="margin-top:12px"><h2 class="section-title">痛风饮食提醒</h2><div class="notice">不要把增肌理解成“大量吃肉”。少把动物内脏、浓肉汤、火锅汤、大量红肉和高嘌呤海产品作为日常蛋白来源；继续保持不喝酒、少含糖饮料。非布司他按医生方案使用，不自行加减量。</div></div>
+  </section>
+
+  <section id="review" class="page">
+    <div class="card"><h2 class="section-title">训练复盘</h2><div class="grid g2"><div><div class="label">今日状态</div><select id="feel" class="input"><option>很好</option><option>正常</option><option>疲劳</option><option>膝盖不适</option><option>疑似痛风/关节不适</option></select></div><div><div class="label">睡眠小时</div><input id="sleep" class="input" type="number" step="0.5"></div></div><div style="height:10px"></div><div class="label">备注</div><textarea id="note" class="input" rows="4" placeholder="例如：高位下拉35kg比较轻，下次可以加重量；右膝无痛。"></textarea><div style="height:10px"></div><button class="btn primary" onclick="saveReview()">保存复盘</button></div>
+    <div class="card" style="margin-top:12px"><h2 class="section-title">近期训练</h2><div id="workoutLogs" class="list"></div></div>
+  </section>
+</div>
+
+<nav class="tabs"><div class="tabs-inner">
+  <div class="tab active" data-page="home"><b>⌂</b>首页</div>
+  <div class="tab" data-page="train"><b>▶</b>训练</div>
+  <div class="tab" data-page="body"><b>◎</b>身体</div>
+  <div class="tab" data-page="nutrition"><b>◫</b>饮食</div>
+  <div class="tab" data-page="review"><b>✓</b>复盘</div>
+</div></nav>
+<script>
+const plan={
+ upperA:{name:'上肢A + 腹肌',duration:'60分钟',desc:'推拉基础 + 腹肌负重',ex:[
+  ['器械推胸','3×8–12','90秒','肩胛后收，不耸肩；最后保留2–3次余力'],['高位下拉','3×8–12','90秒','先沉肩，再把肘拉向身体两侧'],['坐姿划船','3×10–12','90秒','胸口稳定，不用腰部甩动'],['哑铃上斜卧推','3×8–12','90秒','控制下放，肩部不顶起'],['哑铃侧平举','2×12–15','60秒','重量宁轻勿乱，肘部略弯'],['绳索面拉','2×12–15','60秒','拉向眉眼附近，改善久坐肩颈'],['绳索卷腹','3×10–15','60秒','真正卷曲躯干，不是髋部后坐'],['Dead Bug','3×8–10/侧','45秒','腰背贴地，慢速完成'] ]},
+ lower:{name:'下肢 + 核心',duration:'60分钟',desc:'膝髋协同 + 臀腿力量',ex:[
+  ['高脚杯深蹲','3×8–10','90秒','膝盖对准脚尖；无痛范围训练'],['罗马尼亚硬拉','3×8–10','90秒','髋向后坐，背部保持中立'],['腿举','3×10–12','90秒','不要锁死膝盖；不追求深度'],['臀桥 / 臀推','3×10–12','90秒','顶端夹臀，不用腰过伸'],['坐姿腿弯举','2×10–15','60秒','慢放，感受腘绳肌'],['提踵','3×12–15','60秒','全程控制，不弹震'],['Pallof Press','3×10/侧','45秒','躯干不旋转'],['平板支撑','3×30–45秒','45秒','身体保持一条直线'] ]},
+ upperB:{name:'上肢B + 腹肌',duration:'60分钟',desc:'引体能力 + 胸肩背',ex:[
+  ['辅助引体向上','3×6–10','90秒','逐步减少辅助重量'],['器械/哑铃卧推','3×8–12','90秒','肩胛稳定，动作可控'],['单臂哑铃划船','3×8–12','90秒','腰背中立，肘向髋部拉'],['坐姿哑铃肩推','3×8–12','90秒','避免腰部过度后仰'],['反向飞鸟','2×12–15','60秒','轻重量、慢动作'],['二头弯举','2×10–15','60秒','肘部固定'],['绳索下压','2×10–15','60秒','肩膀放松'],['反向卷腹','3×10–15','60秒','骨盆后倾，不靠甩腿'],['悬垂屈膝举腿','3×6–10','60秒','不摆荡，慢慢卷起骨盆'] ]},
+ full:{name:'全身 + Zone 2',duration:'75–90分钟',desc:'全身基础 + 有氧发动机',ex:[
+  ['高脚杯深蹲','3×10','90秒','无痛范围，动作稳定'],['哑铃卧推','3×10','90秒','控制下放'],['高位下拉','3×10','90秒','避免耸肩'],['罗马尼亚硬拉','3×10','90秒','髋主导'],['农夫行走','4×30–40m','60秒','躯干直立，步伐稳定'],['Zone 2有氧','30–40分钟','—','椭圆机/自行车优先；能说短句但呼吸明显加快'] ]}
+};
+const demos={
+'器械推胸':{motion:['准备','推起','控制回落'],steps:['调座椅，让把手约在胸中部高度；双脚踩稳，肩胛轻轻后收下沉。','呼气推至手臂接近伸直，但不要锁死肘关节；手腕保持中立。','吸气用2–3秒缓慢回落，胸部有拉伸感后再次推起。'],good:'胸口稳定、肩不耸、前臂大致垂直地面。',bad:'含胸耸肩、肘完全锁死、借身体弹动。',safe:'肩前侧若出现刺痛，降低重量和活动范围；不要为了追重量让肩膀向前顶。'},
+'高位下拉':{motion:['握杠坐稳','肘向下拉','慢慢还原'],steps:['握距略宽于肩，胸口轻抬，核心收紧，先把肩膀从耳朵旁“沉下来”。','呼气，把肘向下、向身体两侧拉，横杠到上胸附近即可。','吸气缓慢伸直手臂，让背阔肌拉长，但不要完全松肩耸起。'],good:'想象“肘往裤兜里拉”，而不是手在拽杠。',bad:'身体大幅后仰、拉到后脑勺、耸肩借力。',safe:'颈肩僵硬时尤其不要拉到颈后；重量宁轻勿乱。'},
+'坐姿划船':{motion:['坐直伸臂','肘向后拉','控制前送'],steps:['双脚踩稳，脊柱中立，手臂伸直但肩膀不耸起。','呼气，先收肩胛，再让肘沿身体两侧向后拉，握把到腹部附近。','吸气慢慢前送手臂，保持躯干稳定，不用腰部来回摆动。'],good:'胸口稳定，肩胛骨自然靠拢。',bad:'驼背、耸肩、身体前后甩动。',safe:'腰部僵硬时降低重量，优先保持中立位。'},
+'哑铃上斜卧推':{motion:['卧稳举铃','向上推','慢慢下放'],steps:['凳子调到约20–35°，肩胛后收下沉，双脚踩稳。','哑铃从上胸两侧推起，呼气；上方不必让哑铃互撞。','吸气缓慢下放到肘略低于躯干或舒适范围，再次推起。'],good:'手腕在肘上方，肩膀始终离耳朵较远。',bad:'凳子太陡变肩推、腰过度拱起、哑铃下落过深。',safe:'肩前侧不适时减小下放深度。'},
+'哑铃侧平举':{motion:['手臂自然垂','抬至肩高','慢慢放下'],steps:['双脚站稳，肘部微屈，哑铃放在身体两侧。','以肘带动手臂向侧上方抬，约到肩高即可。','停顿片刻后慢慢下放，不要让哑铃自由坠落。'],good:'肩膀下沉，动作像“把肘往两侧送”。',bad:'耸肩、身体摆动、手抬得远高于肩。',safe:'肩夹挤感明显时改为略向身体前方30°抬起。'},
+'绳索面拉':{motion:['绳索在眼前','拉向眉眼','缓慢还原'],steps:['绳索调到脸部高度，双手握绳，站稳后手臂伸直。','呼气，把绳索拉向眉眼两侧，同时肘向外打开。','末端肩胛轻轻后收，随后慢慢还原。'],good:'上臂与地面大致平行，动作来自后肩和上背。',bad:'腰后仰、耸肩、拉到胸口。',safe:'对久坐肩颈友好，但不要用大重量。'},
+'绳索卷腹':{motion:['跪姿握绳','胸廓卷向骨盆','缓慢回到起点'],steps:['跪在绳索前，绳子放在头部两侧，髋部位置基本固定。','呼气收腹，想象“肋骨靠近骨盆”，让上背真正卷曲。','底部短暂停顿，吸气控制回到起始位。'],good:'动作来自腹直肌收缩，不是单纯屁股往后坐。',bad:'髋关节大幅前后移动、手臂拉绳、腰椎过伸。',safe:'腰部不适时减轻重量，并缩小幅度。'},
+'Dead Bug':{motion:['仰卧90°','对侧伸展','回到中心'],steps:['仰卧，髋膝约90°，双臂指向天花板；先把腰背轻压地面。','缓慢伸直一侧腿和对侧手臂，保持腰部不离地。','回到中心，换另一侧；全程呼吸平稳。'],good:'动作幅度以腰背能够贴地为准。',bad:'腰拱起、动作太快、为了伸远而失去核心控制。',safe:'这是很适合你久坐腰僵硬时建立核心控制的动作。'},
+'高脚杯深蹲':{motion:['抱铃站立','髋膝同时下蹲','脚掌发力站起'],steps:['双脚约肩宽，脚尖自然外展，哑铃/壶铃抱在胸前。','吸气收紧核心，髋和膝同时屈曲，膝盖沿脚尖方向移动。','下蹲到无痛且稳定的深度，脚掌整体发力站起并呼气。'],good:'膝盖与第二脚趾方向一致，脚跟不抬。',bad:'膝盖内扣、身体塌腰、为了深度强压膝关节。',safe:'你有膝盖旧伤：只在完全无痛范围训练；疼痛、肿胀或不稳就停止。'},
+'罗马尼亚硬拉':{motion:['站稳持重','髋向后推','夹臀站起'],steps:['双脚髋宽，哑铃贴近大腿，膝盖保持轻微弯曲。','屁股向后推，躯干随之前倾，哑铃沿腿下滑；背部保持中立。','感到大腿后侧明显拉伸后，脚踩地并夹臀站起。'],good:'这是“髋向后”的动作，不是蹲下。',bad:'弓背、哑铃离腿太远、膝盖越蹲越深。',safe:'腰部若有拉扯感而不是臀腿发力，立即减轻重量并缩短下放幅度。'},
+'腿举':{motion:['双脚踩板','屈膝下放','推回起点'],steps:['臀背完整贴靠座椅，双脚约肩宽踩在踏板中部。','松开安全锁，慢慢屈膝下放到舒适深度。','用整个脚掌推回，膝盖接近伸直但不要锁死。'],good:'膝盖沿脚尖方向移动，臀部始终贴垫。',bad:'膝内扣、下放过深导致骨盆卷起、膝盖锁死。',safe:'膝盖旧伤阶段不要追求极深角度和大重量。'},
+'臀桥 / 臀推':{motion:['屈膝准备','髋部顶起','控制下放'],steps:['脚掌踩稳，膝盖弯曲；臀推时肩胛下缘靠凳沿。','收紧腹部，脚跟发力把髋部抬到肩—髋—膝接近一条线。','顶端夹臀1秒，不用腰部继续向上顶，再缓慢下放。'],good:'顶端主要感觉臀部收缩。',bad:'腰椎过度反弓、脚离臀太远、膝盖内扣。',safe:'腰部僵硬时尤其注意“收肋骨”，不要过伸。'},
+'坐姿腿弯举':{motion:['膝接近伸直','向后屈膝','慢慢还原'],steps:['调整靠背和滚垫，让膝关节与器械转轴大致对齐。','呼气屈膝，把滚垫向后下方拉，感受大腿后侧收缩。','停顿后用2–3秒缓慢回到起点。'],good:'臀部贴座，躯干稳定。',bad:'借身体前后摆动、回程直接放掉重量。',safe:'膝关节有不适时先减小重量和活动范围。'},
+'提踵':{motion:['脚掌踩稳','脚跟抬高','慢慢下放'],steps:['前脚掌稳定踩住平台，身体直立。','脚趾抓地，缓慢把脚跟抬到最高，顶端停1秒。','控制脚跟下降，感受小腿拉伸，再重复。'],good:'全过程节奏稳定，不借弹力。',bad:'快速弹震、脚踝内外翻。',safe:'如跟腱或踝部疼痛，停止负重提踵。'},
+'Pallof Press':{motion:['侧对绳索','双手前推','抗住旋转'],steps:['侧身站在绳索旁，双手把把手放在胸前，双脚站稳。','收紧腹部，把双手慢慢向正前方推出。','绳索会把你拉向一侧；保持躯干完全不转，收回再重复。'],good:'骨盆和胸口始终朝正前方。',bad:'身体跟着绳索旋转、耸肩、屏气。',safe:'这是保护腰部、建立抗旋转能力的好动作。'},
+'平板支撑':{motion:['前臂撑地','全身成直线','持续呼吸'],steps:['前臂在肩膀正下方，脚尖撑地。','收腹、夹臀，让耳—肩—髋—踝大致成一直线。','保持正常呼吸，到姿势开始破坏前结束。'],good:'想象把肋骨向骨盆收，臀部轻夹。',bad:'塌腰、撅臀、憋气硬撑时间。',safe:'腰不舒服时宁可缩短时间，也不要塌腰坚持。'},
+'辅助引体向上':{motion:['悬挂沉肩','胸向横杆','控制下降'],steps:['选择能完成6–10次的辅助重量，握距略宽于肩。','先沉肩，再把肘往身体两侧和下方拉，胸口靠近横杆。','顶部不必硬碰横杆，随后2–3秒控制下降。'],good:'先用背部启动，再屈肘。',bad:'耸肩、摆腿借力、快速坠落。',safe:'你现在标准引体约1个，辅助版是主训练，不需要每组硬拉极限单次。'},
+'器械/哑铃卧推':{motion:['肩胛固定','向上推','慢慢下放'],steps:['肩胛轻轻后收下沉，脚踩稳，手腕保持中立。','呼气推起，手臂接近伸直即可。','吸气缓慢下放，肘部不要过度外展。'],good:'肩、肘、腕受力线稳定。',bad:'耸肩、弹胸、肘完全打直锁死。',safe:'肩前侧疼痛时降低重量与下放深度。'},
+'单臂哑铃划船':{motion:['支撑站稳','肘向髋拉','慢慢放下'],steps:['一手支撑凳子，背部中立，持铃手自然垂下。','呼气，把肘朝同侧髋部方向拉，肩胛向后下方移动。','顶部短暂停顿，随后控制哑铃下放。'],good:'身体像桌面一样稳定。',bad:'扭转躯干、耸肩、用惯性甩铃。',safe:'腰部僵硬时可改胸托划船，减少腰部负担。'},
+'坐姿哑铃肩推':{motion:['哑铃在肩侧','向上推','控制下降'],steps:['靠背接近直立，背部贴稳，哑铃在耳朵两侧。','呼气向上推，手臂接近伸直，不必让哑铃碰在一起。','吸气缓慢下降到舒适深度。'],good:'核心收紧，肋骨不要向前翻。',bad:'腰过度后仰、耸肩、下降过低。',safe:'肩颈僵硬明显时先用轻重量。'},
+'反向飞鸟':{motion:['胸口固定','双臂打开','缓慢合回'],steps:['使用反向飞鸟机或俯身轻哑铃，脊柱保持中立。','肘部微弯，把双臂向两侧打开，感受后肩和上背。','停顿后缓慢回到起点。'],good:'轻重量、肩膀远离耳朵。',bad:'耸肩、身体摆动、手臂甩得过高。',safe:'肩颈紧张时减少重量，追求控制感。'},
+'二头弯举':{motion:['肘固定','屈肘举起','慢慢放下'],steps:['自然站立或坐姿，肘贴近身体两侧。','保持上臂不动，屈肘把重量举起并呼气。','顶部轻收缩，随后缓慢下放到手臂接近伸直。'],good:'只有前臂在移动。',bad:'身体后仰、甩动哑铃、肘跑到身体前方。',safe:'手腕保持中立，不要为了重量折腕。'},
+'绳索下压':{motion:['肘夹身体','向下伸肘','控制回程'],steps:['面对绳索站稳，肘贴近身体，前臂约90°。','保持上臂不动，伸肘把绳索向下压。','底部充分收缩肱三头肌，再慢慢回到起点。'],good:'肩膀放松、肘的位置基本不变。',bad:'用身体下压、耸肩、肘前后乱跑。',safe:'肘关节不适时减轻重量。'},
+'反向卷腹':{motion:['仰卧屈膝','骨盆卷起','控制回落'],steps:['仰卧，髋膝弯曲，手臂放身体两侧固定。','呼气收腹，让骨盆向胸口方向卷起，尾骨轻离地。','不要甩腿，慢慢把骨盆放回地面。'],good:'重点是“卷骨盆”，而不是把膝盖拉到胸前。',bad:'靠惯性甩腿、腰部大幅拱起。',safe:'腰部敏感时动作幅度可以很小。'},
+'悬垂屈膝举腿':{motion:['稳定悬挂','屈膝卷骨盆','慢慢放下'],steps:['双手悬挂，先让肩胛稳定，身体尽量不摆动。','呼气屈膝，并在顶部轻轻卷起骨盆。','用2–3秒控制腿下降，重新稳定后再做下一次。'],good:'动作慢、身体不摆，顶部有骨盆后倾。',bad:'荡秋千、只抬大腿不卷骨盆、快速下坠。',safe:'握力不足可使用屈肘支撑式举腿器械。'},
+'哑铃卧推':{motion:['卧稳持铃','垂直推起','控制下放'],steps:['平躺，肩胛后收下沉，双脚踩稳。','呼气把哑铃向上推至手臂接近伸直。','吸气缓慢下放到胸部两侧的舒适深度。'],good:'前臂大致垂直地面，肩膀不向前跑。',bad:'腰过度拱起、哑铃碰撞、下放失控。',safe:'肩前侧不舒服时减少下放范围。'},
+'农夫行走':{motion:['提起重物','直立行走','稳定放下'],steps:['两侧各持一只哑铃或壶铃，像提购物袋一样站直。','收紧腹部，肩膀自然下沉，用稳定小步向前走。','到距离后先停稳，再屈髋屈膝把重量安全放下。'],good:'身体直立，不左右摇摆。',bad:'耸肩、含胸、为了重量走得歪斜。',safe:'这是全身和核心训练，不需要一开始就用极大重量。'},
+'Zone 2有氧':{motion:['热身5分钟','稳定有氧30–40分钟','冷身5分钟'],steps:['优先椭圆机或自行车，用5分钟逐渐提高强度。','保持能说完整短句、但呼吸明显加快的强度持续训练。','结束前5分钟逐渐降低强度，不要突然停下。'],good:'主观感觉约4–6/10，能稳定完成而不是冲刺。',bad:'一开始太快、全程喘到无法说话、训练后脱水明显。',safe:'高尿酸/痛风史：训练前后都要保持水合；前4周不做HIIT。'}
+};
+function motionType(name){if(/深蹲|腿举|提踵/.test(name))return 'squat';if(/硬拉|臀桥|臀推/.test(name))return 'hinge';if(/下拉|划船|引体|弯举|面拉|下压/.test(name))return 'pull';if(/卧推|推胸|肩推|侧平举|飞鸟/.test(name))return 'press';if(/卷腹|Dead Bug|Pallof|支撑|举腿/.test(name))return 'core';if(/农夫|Zone/.test(name))return 'carry';return 'demo'}
+function gifHtml(name){return `<div class="gif-demo"><div class="gif-stage" data-motion="${motionType(name)}" aria-label="${name}循环动作示意动画"><div class="gif-person"><span class="gif-head"></span><span class="gif-body"></span><span class="gif-arm l"></span><span class="gif-arm r"></span><span class="gif-leg l"></span><span class="gif-leg r"></span></div><span class="gif-floor"></span><span class="gif-label">循环动作示意 · 以文字要点为准</span></div></div>`}
+const realVideos={
+'高脚杯深蹲':{id:'nfX7IFK9UNI',src:'NASM'},
+'罗马尼亚硬拉':{id:'xgusDooVfKU',src:'NASM'},
+'绳索面拉':{id:'eTCBSFlCJ_s',src:'NASM'},
+'Dead Bug':{id:'bxn9FBrt4-A',src:'NASM'},
+'Pallof Press':{id:'_2xWmYNnFS8',src:'Colossus Fitness'},
+};
+const videoSearch={
+'器械推胸':'machine chest press proper form','高位下拉':'lat pulldown proper form','坐姿划船':'seated cable row proper form','哑铃上斜卧推':'incline dumbbell press proper form','哑铃侧平举':'dumbbell lateral raise proper form','绳索卷腹':'cable crunch proper form','高脚杯深蹲':'goblet squat proper form','罗马尼亚硬拉':'romanian deadlift proper form','腿举':'leg press proper form','臀桥/臀推':'hip thrust proper form','坐姿腿弯举':'seated leg curl proper form','提踵':'calf raise proper form','Pallof Press':'pallof press proper form','平板支撑':'plank proper form','辅助引体向上':'assisted pull up proper form','器械/哑铃卧推':'dumbbell bench press proper form','单臂哑铃划船':'one arm dumbbell row proper form','坐姿哑铃肩推':'seated dumbbell shoulder press proper form','反向飞鸟':'reverse fly proper form','二头弯举':'dumbbell biceps curl proper form','绳索下压':'triceps rope pushdown proper form','反向卷腹':'reverse crunch proper form','悬垂屈膝举腿':'hanging knee raise proper form','哑铃卧推':'dumbbell bench press proper form','农夫行走':'farmer carry proper form','Zone 2有氧':'zone 2 cardio talk test'
+};
+function ytSearchUrl(name){return 'https://www.youtube.com/results?search_query='+encodeURIComponent((videoSearch[name]||name)+' tutorial');}
+function loadVideo(btn,id,name){const wrap=btn.closest('.video-wrap');wrap.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&playsinline=1" title="${name} 真人标准动作示范" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`}
+function realVideoHtml(name){const v=realVideos[name];if(v){return `<div class="real-video"><div class="real-video-head"><span class="real-video-title">真人标准动作视频</span><span class="real-video-badge">${v.src}</span></div><div class="video-wrap"><div class="video-placeholder"><b>点击加载真人动作视频</b><span class="small" style="margin-top:5px">首次播放需要网络；不会自动播放，避免训练时耗流量。</span><button class="btn primary" type="button" onclick="loadVideo(this,'${v.id}','${name}')">▶ 播放示范</button></div></div><div class="video-links"><a class="video-link alt" href="${ytSearchUrl(name)}" target="_blank" rel="noopener">更多真人示范</a></div><div class="video-note">先看完整动作，再结合下方“做对的感觉 / 常见错误 / 安全提醒”。训练时不要边做边盯屏幕。</div></div>`}
+return `<div class="real-video"><div class="real-video-head"><span class="real-video-title">真人标准动作视频</span><span class="real-video-badge">联网查看</span></div><div class="video-wrap"><div class="video-placeholder"><b>该动作提供真人视频入口</b><span class="small" style="margin-top:5px">为了避免嵌入来源质量不稳定，点击后直接查看对应动作的视频搜索结果。</span><a class="btn primary" style="text-decoration:none;margin-top:10px" href="${ytSearchUrl(name)}" target="_blank" rel="noopener">▶ 打开真人示范</a></div></div><div class="video-note">优先选择 NASM / ACE / Physiotutors / Renaissance Periodization 等专业机构或认证教练演示。</div></div>`;
+}
+function demoHtml(name){const d=demos[name];if(!d)return '';return `<details class="demo"><summary>查看真人标准动作示例</summary><div class="demo-body">${realVideoHtml(name)}<div class="motion"><span>${d.motion[0]}</span><i>→</i><span>${d.motion[1]}</span><i>→</i><span>${d.motion[2]}</span></div><div class="demo-steps">${d.steps.map((x,i)=>`<div class="demo-step"><b>步骤 ${i+1}</b>${x}</div>`).join('')}</div><div class="demo-grid"><div class="demo-note good"><strong>✓ 做对的感觉</strong>${d.good}</div><div class="demo-note bad"><strong>✕ 常见错误</strong>${d.bad}</div><div class="demo-note safe"><strong>⚠ 你的安全提醒</strong>${d.safe}</div></div></div></details>`}
+
+const schedule=[['周一','upperA'],['周三','lower'],['周五','upperB'],['周日','full']];
+const S={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+let current='upperA',timerInt=null,timerLeft=0;
+function todayKey(){return new Date().toISOString().slice(0,10)}
+function getSuggested(){let d=new Date().getDay(); return d===1?'upperA':d===3?'lower':d===5?'upperB':d===0?'full':'upperA'}
+function init(){
+ current=getSuggested();
+ const sel=document.getElementById('sessionSelect'); sel.innerHTML=Object.entries(plan).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join(''); sel.value=current;
+ document.getElementById('todayTitle').textContent=plan[current].name;document.getElementById('todayDuration').textContent=plan[current].duration;document.getElementById('todayDesc').textContent=plan[current].desc+'；前4周动作质量优先。';
+ document.getElementById('weekPlan').innerHTML=schedule.map(([d,k])=>`<tr><td><b>${d}</b></td><td>${plan[k].name}</td><td class="muted">${plan[k].duration}</td></tr>`).join('');
+ renderWorkout(current); refreshBody(); refreshLogs(); refreshChart(); weekInfo();
+}
+function switchPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.page===id));window.scrollTo(0,0)}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchPage(t.dataset.page));
+function openToday(){switchPage('train');document.getElementById('sessionSelect').value=current;renderWorkout(current)}
+function parseSets(txt){let n=parseInt(txt);return isNaN(n)?1:n}
+function renderWorkout(k){current=k;const p=plan[k];document.getElementById('trainTitle').textContent=p.name;const saved=S.get('session_'+todayKey()+'_'+k,{});document.getElementById('exerciseList').innerHTML=p.ex.map((e,ei)=>{let n=parseSets(e[1]);let rows='';for(let i=0;i<n;i++){let key=`${ei}_${i}`,v=saved[key]||{};rows+=`<div class="setrow"><div class="setidx">${i+1}组</div><input type="number" step="0.5" placeholder="重量kg" value="${v.w??''}" onchange="saveSet(${ei},${i},'w',this.value)"><input type="number" placeholder="次数" value="${v.r??''}" onchange="saveSet(${ei},${i},'r',this.value)"><button class="check ${v.done?'done':''}" onclick="toggleSet(this,${ei},${i},'${e[2]}')">${v.done?'✓':'○'}</button></div>`}
+return `<div class="exercise"><div class="row"><h3>${e[0]}</h3><span class="badge">${e[1]}</span></div><div class="meta">休息 ${e[2]}</div><div class="sets">${rows}</div><div class="tip">${e[3]}</div>${demoHtml(e[0])}<div class="timerbox hidden" id="timer_${ei}">休息 <span class="timer">00:00</span></div></div>`}).join('')}
+function saveSet(ei,si,f,val){let k='session_'+todayKey()+'_'+current,obj=S.get(k,{}),key=`${ei}_${si}`;obj[key]=obj[key]||{};obj[key][f]=val;S.set(k,obj)}
+function toggleSet(btn,ei,si,rest){let k='session_'+todayKey()+'_'+current,obj=S.get(k,{}),key=`${ei}_${si}`;obj[key]=obj[key]||{};obj[key].done=!obj[key].done;S.set(k,obj);btn.classList.toggle('done',obj[key].done);btn.textContent=obj[key].done?'✓':'○';if(obj[key].done&&rest!=='—')startTimer(rest,ei)}
+function startTimer(rest,ei){clearInterval(timerInt);timerLeft=parseInt(rest)||60;const box=document.getElementById('timer_'+ei);box.classList.remove('hidden');const span=box.querySelector('.timer');const draw=()=>{span.textContent=`${String(Math.floor(timerLeft/60)).padStart(2,'0')}:${String(timerLeft%60).padStart(2,'0')}`};draw();timerInt=setInterval(()=>{timerLeft--;draw();if(timerLeft<=0){clearInterval(timerInt);box.classList.add('hidden');if(navigator.vibrate)navigator.vibrate([150,100,150])}},1000)}
+function finishWorkout(){const logs=S.get('workoutLogs',[]);logs.unshift({date:todayKey(),name:plan[current].name});S.set('workoutLogs',logs.slice(0,50));alert('训练已记录。今天做得稳，比做得狠更重要。');refreshLogs();switchPage('review')}
+function saveBody(){let rec={date:todayKey(),weight:+iWeight.value||null,waist:+iWaist.value||null,fat:+iFat.value||null,uric:+iUric.value||null,push:+iPush.value||null,pull:+iPull.value||null};let arr=S.get('bodyLogs',[]).filter(x=>x.date!==rec.date);arr.push(rec);arr.sort((a,b)=>a.date.localeCompare(b.date));S.set('bodyLogs',arr);refreshBody();refreshChart();refreshLogs();alert('身体数据已保存')}
+function refreshBody(){let arr=S.get('bodyLogs',[]),last=arr[arr.length-1]||{};mWeight.textContent=last.weight??70.1;mFat.textContent=last.fat??22.3;mWaist.textContent=last.waist??'--';iWeight.value=last.weight??'';iWaist.value=last.waist??'';iFat.value=last.fat??'';iUric.value=last.uric??'';iPush.value=last.push??'';iPull.value=last.pull??'';let progress=8;if(last.fat)progress=Math.max(8,Math.min(100,(22.3-last.fat)/(22.3-15)*100));goalProgress.style.width=progress+'%'}
+function refreshChart(){let arr=S.get('bodyLogs',[]).filter(x=>x.weight).slice(-12);if(!arr.length){weightChart.innerHTML='<div class="muted small">暂无记录</div>';return}let min=Math.min(...arr.map(x=>x.weight)),max=Math.max(...arr.map(x=>x.weight));if(max===min)max=min+1;weightChart.innerHTML=arr.map(x=>{let h=35+((x.weight-min)/(max-min))*110;return `<div class="bar" style="height:${h}px"><span>${x.weight}</span></div>`}).join('')}
+function refreshLogs(){let b=S.get('bodyLogs',[]).slice().reverse().slice(0,12);bodyLogs.innerHTML=b.length?b.map(x=>`<div class="logitem"><b>${x.date}</b><div class="small muted">体重 ${x.weight??'-'}kg · 腰围 ${x.waist??'-'}cm · 体脂 ${x.fat??'-'}% · 尿酸 ${x.uric??'-'} · 俯卧撑 ${x.push??'-'} · 引体 ${x.pull??'-'}</div></div>`).join(''):'<div class="muted small">暂无记录</div>';let w=S.get('workoutLogs',[]).slice(0,20);workoutLogs.innerHTML=w.length?w.map(x=>`<div class="logitem"><b>${x.date}</b><div class="small muted">${x.name}</div></div>`).join(''):'<div class="muted small">暂无训练记录</div>'}
+function saveReview(){let arr=S.get('reviews',[]);arr.unshift({date:todayKey(),feel:feel.value,sleep:sleep.value,note:note.value});S.set('reviews',arr.slice(0,50));alert('复盘已保存');note.value=''}
+function weekInfo(){let start=new Date('2026-09-07T00:00:00');let now=new Date();let w=Math.max(1,Math.min(20,Math.floor((now-start)/(7*86400000))+1));weekPill.textContent=`第${w}周`}
+
+// PWA: 安装、离线缓存与联网状态
+let deferredInstallPrompt=null;
+const installCard=document.getElementById('installCard');
+const installBtn=document.getElementById('installBtn');
+function updateNetChip(){const c=document.getElementById('netChip');if(!c)return;const on=navigator.onLine;c.textContent=on?'在线':'离线';c.classList.toggle('online',on)}
+window.addEventListener('online',updateNetChip);window.addEventListener('offline',updateNetChip);updateNetChip();
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;installCard?.classList.add('show')});
+installBtn?.addEventListener('click',async()=>{if(!deferredInstallPrompt){alert('请使用 Chrome 通过 HTTPS 地址打开本工作台，然后在浏览器菜单中选择“安装应用”或“添加到主屏幕”。');return}deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;installCard?.classList.remove('show')});
+window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;installCard?.classList.remove('show')});
+if(window.matchMedia('(display-mode: standalone)').matches){installCard?.classList.remove('show')}
+if('serviceWorker' in navigator && location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service Worker 注册失败',err)))}
+
+init();
+</script>
+</body>
+</html>
